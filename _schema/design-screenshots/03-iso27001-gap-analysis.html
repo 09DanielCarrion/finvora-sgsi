@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finvora | ISO 27001 Gap Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 207, 250, 0.2), transparent);
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-secondary {
+            box-shadow: 0 0 15px rgba(0, 207, 250, 0.3);
+        }
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#d5e4fa",
+                        "secondary-fixed": "#b4ebff",
+                        "surface-variant": "#283647",
+                        "on-secondary": "#003542",
+                        "on-primary": "#192e5f",
+                        "primary-container": "#b2c5ff",
+                        "outline": "#8f909a",
+                        "terminal-green": "#a2e7ff",
+                        "surface-tint": "#b2c5ff",
+                        "tertiary-fixed": "#ffdbce",
+                        "on-error": "#690005",
+                        "danger-error": "#ffb4ab",
+                        "on-tertiary-fixed": "#360f01",
+                        "surface-dim": "#051424",
+                        "on-surface-variant": "#c5c6d0",
+                        "on-surface": "#d5e4fa",
+                        "on-secondary-fixed": "#001f27",
+                        "surface-bright": "#2c3a4c",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#6c3924",
+                        "surface": "#051424",
+                        "glass-fill": "rgba(255, 255, 255, 0.05)",
+                        "surface-container-high": "#1d2b3c",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "secondary": "#99e5ff",
+                        "secondary-fixed-dim": "#3ed7ff",
+                        "background": "#051424",
+                        "on-primary-fixed-variant": "#324577",
+                        "surface-container": "#122031",
+                        "on-secondary-fixed-variant": "#004e5f",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#283647",
+                        "surface-container-low": "#0e1c2d",
+                        "tertiary-container": "#ffb598",
+                        "tertiary": "#ffdbce",
+                        "inverse-primary": "#4a5d90",
+                        "primary-fixed": "#dae2ff",
+                        "on-tertiary-container": "#7a442e",
+                        "on-tertiary": "#512310",
+                        "glass-border": "rgba(255, 255, 255, 0.08)",
+                        "inverse-surface": "#d5e4fa",
+                        "surface-container-lowest": "#010f1f",
+                        "primary": "#dae1ff",
+                        "surface-ink": "#051424",
+                        "outline-variant": "#44464f",
+                        "on-primary-container": "#3e5183",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#233143",
+                        "secondary-container": "#00cffa",
+                        "on-primary-fixed": "#001848",
+                        "on-secondary-container": "#005467"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "element-gap": "1.5rem",
+                        "grid-unit": "40px",
+                        "header-height": "64px",
+                        "sidebar-width": "260px",
+                        "container-padding": "2rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "mono-data": ["Geist"],
+                        "label-micro": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "label-micro": ["10px", {"lineHeight": "12px", "letterSpacing": "0.2em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md grid-bg min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[260px] border-r border-glass-border bg-surface-container-lowest z-50">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-secondary-container rounded flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tighter text-on-surface">FINVORA</h1>
+<p class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">SOC Command Center</p>
+</div>
+</div>
+<nav class="mt-8 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-glass-fill hover:text-on-surface transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-glass-fill hover:text-on-surface transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">business</span>
+<span class="font-label-caps text-label-caps">The Company</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed bg-secondary-container/20 border-l-2 border-secondary-container shadow-[0_0_15px_rgba(0,207,250,0.3)] brightness-125 transition-all duration-300 rounded-r-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-caps text-label-caps">ISO 27001</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-glass-fill hover:text-on-surface transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps text-label-caps">EU AI Act</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-glass-fill hover:text-on-surface transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">settings_applications</span>
+<span class="font-label-caps text-label-caps">ISMS Operations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-glass-fill hover:text-on-surface transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-caps text-label-caps">Relations Map</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-[260px] min-h-screen">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center h-[64px] w-full px-container-padding sticky top-0 z-40 bg-surface/80 backdrop-blur-xl border-b border-glass-border">
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-secondary tracking-[0.2em] uppercase">ISO 27001 Compliance</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-6">
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-all" href="#">Controls</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-all" href="#">Audit Logs</a>
+<a class="font-body-md text-on-surface-variant hover:text-on-surface transition-all" href="#">Assets</a>
+</div>
+<div class="flex items-center gap-3 border-l border-glass-border pl-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-container-padding space-y-8">
+<!-- Breadcrumbs & Title -->
+<div class="space-y-2">
+<nav class="flex items-center gap-2 text-on-surface-variant font-label-caps text-[11px] uppercase tracking-wider">
+<span>Dashboard</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>ISO 27001</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-secondary">Gap Analysis</span>
+</nav>
+<div class="flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">ISO 27001 Gap Analysis</h2>
+<div class="flex gap-2">
+<button class="bg-primary text-on-primary px-4 py-2 font-label-caps text-label-caps rounded flex items-center gap-2 hover:brightness-110">
+<span class="material-symbols-outlined text-[18px]">download</span> Export Report
+                        </button>
+</div>
+</div>
+</div>
+<!-- Dashboard Controls -->
+<div class="flex flex-wrap items-center justify-between gap-4 glass-card p-4 rounded-xl">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-body-md focus:ring-1 focus:ring-secondary" placeholder="Search controls or clauses..." type="text"/>
+</div>
+<button class="glass-card px-4 py-2 flex items-center gap-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+<span class="font-label-caps text-label-caps">Filters</span>
+</button>
+</div>
+<div class="flex bg-surface-container-lowest p-1 rounded-lg border border-glass-border">
+<button class="px-4 py-2 font-label-caps text-label-caps rounded-md transition-all bg-secondary-container text-on-secondary-container shadow-lg">By Domain</button>
+<button class="px-4 py-2 font-label-caps text-label-caps rounded-md text-on-surface-variant hover:bg-glass-fill">By Risk Level</button>
+<button class="px-4 py-2 font-label-caps text-label-caps rounded-md text-on-surface-variant hover:bg-glass-fill">By Status</button>
+</div>
+</div>
+<!-- Accordion Sections -->
+<div class="space-y-4">
+<!-- Section 1: Organizational Controls (Expanded) -->
+<div class="glass-card rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 bg-surface-container/30" onclick="this.parentElement.querySelector('.content').classList.toggle('hidden')">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">folder_managed</span>
+<div class="text-left">
+<h3 class="font-headline-md text-body-lg font-bold">Organizational Controls</h3>
+<p class="font-label-caps text-label-micro text-on-surface-variant">37 Controls Tracked</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-mono-data text-secondary text-headline-md">84%</p>
+<p class="font-label-caps text-label-micro uppercase text-on-surface-variant">Compliance Score</p>
+</div>
+<span class="material-symbols-outlined transition-transform">expand_more</span>
+</div>
+</button>
+<div class="content p-6 border-t border-glass-border">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Access Control -->
+<div class="glass-card rounded-xl p-5 border-l-4 border-l-terminal-green relative group overflow-hidden">
+<div class="scan-line opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-caps text-label-micro text-terminal-green uppercase mb-1">Implemented</p>
+<h4 class="font-headline-md text-body-lg">A.5.15 Access Control</h4>
+</div>
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded">
+<span class="px-1 font-label-caps text-[10px] text-on-surface-variant cursor-pointer">V1</span>
+<span class="px-1 font-label-caps text-[10px] bg-secondary-container text-on-secondary-container rounded cursor-pointer">V2</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="bg-surface-container-low p-2 rounded">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">Risk Level</p>
+<p class="font-mono-data text-terminal-green">LOW</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">SoA Status</p>
+<p class="font-mono-data text-secondary">INCLUDED</p>
+</div>
+</div>
+<div class="space-y-1 border-t border-glass-border pt-4">
+<div class="flex items-center justify-between text-on-surface-variant hover:text-on-surface cursor-pointer py-1">
+<span class="font-label-caps text-label-caps">Gap Analysis</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant hover:text-on-surface cursor-pointer py-1">
+<span class="font-label-caps text-label-caps">Implementation Details</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Identity Management (Expanded with Findings) -->
+<div class="glass-card rounded-xl p-5 border-l-4 border-l-tertiary-container col-span-1 md:col-span-2 lg:col-span-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-caps text-label-micro text-tertiary uppercase mb-1">Partial</p>
+<h4 class="font-headline-md text-body-lg">A.5.16 Identity Management</h4>
+</div>
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded">
+<span class="px-1 font-label-caps text-[10px] bg-secondary-container text-on-secondary-container rounded cursor-pointer">V1</span>
+<span class="px-1 font-label-caps text-[10px] text-on-surface-variant cursor-pointer">V2</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-low p-2 rounded">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">Risk Level</p>
+<p class="font-mono-data text-tertiary">MEDIUM</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">SoA Status</p>
+<p class="font-mono-data text-secondary">INCLUDED</p>
+</div>
+</div>
+<!-- Expanded Content -->
+<div class="space-y-4">
+<div class="bg-[#1A0A0A] border border-error-container p-3 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-[18px] mt-0.5">warning</span>
+<div>
+<p class="font-label-caps text-label-caps text-error">Non-conformity Detected</p>
+<p class="text-[12px] text-on-error-container/80 mt-1">Audit evidence lacks verification for external partner authentication flows.</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="border-l-2 border-error-container pl-3 py-1">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">Auditor Finding</p>
+<p class="text-body-md text-danger-error italic mt-1">"MFA not enforced for external vendors accessing dev environments."</p>
+</div>
+<div class="border-l-2 border-tertiary pl-3 py-1">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">Corrective Action</p>
+<p class="text-body-md text-tertiary mt-1">Deploy HW tokens for Securocorp and update IAM policy v4.2.</p>
+</div>
+</div>
+<div class="bg-surface-container-highest p-3 rounded-lg">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase mb-2">Policy Diff View</p>
+<div class="font-mono-data text-[12px] space-y-1">
+<div class="opacity-50">- External auth: Standard 2FA preferred.</div>
+<div class="text-terminal-green bg-terminal-green/10 px-1">+ External auth: MFA MANDATORY via FIDO2 compliant hardware.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Authentication Info -->
+<div class="glass-card rounded-xl p-5 border-l-4 border-l-error relative">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label-caps text-label-micro text-error uppercase mb-1">Not Implemented</p>
+<h4 class="font-headline-md text-body-lg">A.5.17 Authentication Information</h4>
+</div>
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded">
+<span class="px-1 font-label-caps text-[10px] text-on-surface-variant cursor-pointer">V1</span>
+<span class="px-1 font-label-caps text-[10px] bg-secondary-container text-on-secondary-container rounded cursor-pointer">V2</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="bg-surface-container-low p-2 rounded">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">Risk Level</p>
+<p class="font-mono-data text-error">HIGH</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<p class="font-label-caps text-label-micro text-on-surface-variant uppercase">SoA Status</p>
+<p class="font-mono-data text-secondary">INCLUDED</p>
+</div>
+</div>
+<div class="space-y-1 border-t border-glass-border pt-4">
+<div class="flex items-center justify-between text-on-surface-variant hover:text-on-surface cursor-pointer py-1">
+<span class="font-label-caps text-label-caps">Related Controls &amp; Clauses</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+<div class="mt-4">
+<button class="w-full py-2 bg-error-container text-on-error-container font-label-caps text-label-caps rounded hover:bg-error transition-colors">Start Remediation</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: People Controls -->
+<div class="glass-card rounded-xl overflow-hidden opacity-80 hover:opacity-100 transition-opacity">
+<button class="w-full flex items-center justify-between p-6" onclick="this.parentElement.querySelector('.content')?.classList.toggle('hidden')">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">groups</span>
+<div class="text-left">
+<h3 class="font-headline-md text-body-lg font-bold">People Controls</h3>
+<p class="font-label-caps text-label-micro text-on-surface-variant">8 Controls Tracked</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-mono-data text-terminal-green text-headline-md">100%</p>
+<p class="font-label-caps text-label-micro uppercase text-on-surface-variant">Compliance Score</p>
+</div>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</button>
+</div>
+<!-- Section 3: Physical Controls -->
+<div class="glass-card rounded-xl overflow-hidden opacity-80 hover:opacity-100 transition-opacity">
+<button class="w-full flex items-center justify-between p-6" onclick="this.parentElement.querySelector('.content')?.classList.toggle('hidden')">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">domain</span>
+<div class="text-left">
+<h3 class="font-headline-md text-body-lg font-bold">Physical Controls</h3>
+<p class="font-label-caps text-label-micro text-on-surface-variant">14 Controls Tracked</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-mono-data text-secondary-fixed text-headline-md">92%</p>
+<p class="font-label-caps text-label-micro uppercase text-on-surface-variant">Compliance Score</p>
+</div>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</button>
+</div>
+<!-- Section 4: Technological Controls -->
+<div class="glass-card rounded-xl overflow-hidden">
+<button class="w-full flex items-center justify-between p-6 bg-surface-container/10" onclick="this.parentElement.querySelector('.content')?.classList.toggle('hidden')">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error">settings_suggest</span>
+<div class="text-left">
+<h3 class="font-headline-md text-body-lg font-bold">Technological Controls</h3>
+<p class="font-label-caps text-label-micro text-on-surface-variant">34 Controls Tracked</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="text-right">
+<p class="font-mono-data text-error text-headline-md">45%</p>
+<p class="font-label-caps text-label-micro uppercase text-on-surface-variant text-error animate-pulse">Critical Gap</p>
+</div>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Dashboard Analytics Bottom Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 glass-card rounded-xl p-6 relative overflow-hidden">
+<div class="scan-line"></div>
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-headline-md text-body-lg">Gap Remediation Progress</h4>
+<span class="font-label-caps text-label-micro text-on-surface-variant uppercase">Target: Oct 2024</span>
+</div>
+<!-- Placeholder for Chart -->
+<div class="h-48 w-full flex items-end gap-2 px-2">
+<div class="flex-1 bg-primary/20 h-[30%] rounded-t-sm border-t border-primary relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-mono-data text-[10px] text-primary">30%</div>
+</div>
+<div class="flex-1 bg-primary/20 h-[45%] rounded-t-sm border-t border-primary relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-mono-data text-[10px] text-primary">45%</div>
+</div>
+<div class="flex-1 bg-secondary-container h-[60%] rounded-t-sm border-t border-secondary-fixed relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-mono-data text-[10px] text-secondary">60%</div>
+</div>
+<div class="flex-1 bg-secondary-container h-[75%] rounded-t-sm border-t border-secondary-fixed relative group shadow-[0_0_15px_rgba(0,207,250,0.2)]">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-mono-data text-[10px] text-secondary">75%</div>
+</div>
+<div class="flex-1 bg-secondary-container h-[84%] rounded-t-sm border-t border-secondary-fixed relative group shadow-[0_0_20px_rgba(0,207,250,0.4)]">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 font-mono-data text-[10px] text-secondary">84%</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 font-label-caps text-label-micro text-on-surface-variant uppercase tracking-tighter">
+<span>MAY</span>
+<span>JUN</span>
+<span>JUL</span>
+<span>AUG</span>
+<span>SEPT</span>
+</div>
+</div>
+<div class="glass-card rounded-xl p-6 bg-surface-container-high">
+<h4 class="font-headline-md text-body-lg mb-4">Risk Distribution</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-4 border-error border-t-transparent flex items-center justify-center font-mono-data text-error">12</div>
+<div>
+<p class="font-label-caps text-label-caps">High Risk Gaps</p>
+<p class="text-[11px] text-on-surface-variant">Requires immediate action</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-4 border-tertiary border-t-transparent flex items-center justify-center font-mono-data text-tertiary">28</div>
+<div>
+<p class="font-label-caps text-label-caps">Medium Risk Gaps</p>
+<p class="text-[11px] text-on-surface-variant">Remediation scheduled</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-4 border-terminal-green border-t-transparent flex items-center justify-center font-mono-data text-terminal-green">53</div>
+<div>
+<p class="font-label-caps text-label-caps">Low/Negligible</p>
+<p class="text-[11px] text-on-surface-variant">Maintenance monitoring</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'all 0.3s ease';
+            });
+        });
+    </script>
+</body></html>

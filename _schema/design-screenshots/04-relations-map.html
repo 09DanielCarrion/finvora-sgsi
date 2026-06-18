@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finvora | Relations Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb598",
+                        "surface-bright": "#363942",
+                        "on-surface": "#e1e2ee",
+                        "inverse-on-surface": "#2e3039",
+                        "outline-variant": "#424655",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#5b8cff",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "background": "#10131b",
+                        "surface-variant": "#32343e",
+                        "inverse-primary": "#0056d2",
+                        "surface": "#10131b",
+                        "on-secondary-fixed-variant": "#004e5f",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#b4ebff",
+                        "on-tertiary": "#591d00",
+                        "surface-dim": "#10131b",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "surface-container-lowest": "#0b0e16",
+                        "primary-fixed": "#dae2ff",
+                        "on-tertiary-fixed-variant": "#7e2c00",
+                        "surface-container-low": "#191b24",
+                        "inverse-surface": "#e1e2ee",
+                        "outline": "#8c90a1",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-secondary": "#003642",
+                        "tertiary": "#ffb598",
+                        "on-tertiary-container": "#4e1800",
+                        "surface-tint": "#b2c5ff",
+                        "tertiary-fixed": "#ffdbce",
+                        "secondary": "#a2e7ff",
+                        "on-background": "#e1e2ee",
+                        "surface-container": "#1d1f28",
+                        "on-secondary-fixed": "#001f27",
+                        "on-primary": "#002b73",
+                        "surface-container-highest": "#32343e",
+                        "on-surface-variant": "#c2c6d8",
+                        "on-secondary-container": "#005669",
+                        "secondary-container": "#00d2fd",
+                        "on-primary-fixed": "#001848",
+                        "on-primary-container": "#002565",
+                        "tertiary-container": "#f1651f",
+                        "secondary-fixed-dim": "#3cd7ff",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "surface-container-high": "#272a33",
+                        "primary": "#b2c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar_width": "260px",
+                        "grid_margin": "2rem",
+                        "component_padding_md": "1.25rem",
+                        "component_padding_sm": "0.75rem",
+                        "grid_gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-xs": ["Inter"],
+                        "body-md": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A1628;
+            color: #e1e2ee;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-panel {
+            background: rgba(15, 33, 64, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .node-pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- Fixed SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[260px] border-r border-outline-variant/20 bg-surface-container-lowest flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 bg-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<h1 class="font-bold text-xl tracking-tighter text-on-surface">FINVORA</h1>
+</div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-outline ml-11">SOC Command Center</p>
+</div>
+<nav class="mt-4 flex-1">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">business</span>
+<span class="font-medium text-sm">The Company</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-medium text-sm">ISO 27001</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-medium text-sm">EU AI Act</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">settings_applications</span>
+<span class="font-medium text-sm">ISMS Operations</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-secondary-fixed bg-secondary-container/10 border-l-2 border-secondary-container shadow-[0_0_15px_rgba(0,210,253,0.2)]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="font-medium text-sm">Relations Map</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a cybersecurity analyst in a dark environment, wearing a sleek headset, illuminated by the cool blue glow of multiple monitors. The style is cinematic and high-contrast, with deep navy shadows and electric blue highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfG1FJE4e3fWeus60LpatmlvIZU-E4KVHhtndPqYb-7XttYaY2LESkmaaEQ6lnHuDmk0fMsVb5lTKdl5apRHUtZhx9LRXrV8GzZnRsta-xEQ-srtZro0K6wWq1NpGfAo8PYx70vAByblmu6W2xvTr6Fnu8XPgMN83W7odrYyOcQS2wRaK5-GffZ8yeFLxS2o5sXCJlZYyfEt2UZGHmdARRcjDlniaI_hJ7zqjITmA9kp__BuRa4kTylwvk0wWqkg5RuRBm20WIGg"/>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface">Alex Chen</p>
+<p class="text-[10px] text-outline">Lead Auditor</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[260px] flex-1 flex flex-col min-h-screen relative overflow-hidden">
+<!-- TopAppBar -->
+<header class="h-16 px-8 flex items-center justify-between glass-panel sticky top-0 z-40 border-b border-white/5">
+<div>
+<nav class="text-[11px] font-label-xs text-outline flex items-center gap-2 mb-0.5">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-on-surface">Relations Map</span>
+</nav>
+<h2 class="text-lg font-bold tracking-tight text-on-surface uppercase">ISO 27001 Compliance</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-sm">search</span>
+<input class="bg-surface-container-lowest border-none rounded-lg text-xs pl-10 pr-4 py-2 w-64 focus:ring-1 focus:ring-primary transition-all" placeholder="Search controls..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-outline hover:text-on-surface relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="text-outline hover:text-on-surface">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Sub-header & View Toggles -->
+<section class="px-8 py-4 flex items-center justify-between bg-surface-container-lowest/50 border-b border-white/5">
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container shadow-[0_0_15px_rgba(0,210,253,0.3)] transition-all">
+                    All Relations
+                </button>
+<button class="px-4 py-1.5 rounded-full text-xs font-semibold text-outline hover:bg-white/5 transition-all border border-transparent hover:border-white/10">
+                    By ISO Clause
+                </button>
+<button class="px-4 py-1.5 rounded-full text-xs font-semibold text-outline hover:bg-white/5 transition-all border border-transparent hover:border-white/10">
+                    By Regulation
+                </button>
+<button class="px-4 py-1.5 rounded-full text-xs font-semibold text-outline hover:bg-white/5 transition-all border border-transparent hover:border-white/10">
+                    By Annex A Control
+                </button>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-all border border-primary/20">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="text-xs font-bold uppercase tracking-wider">Filters</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-secondary-container/10 text-secondary-container rounded-lg hover:bg-secondary-container/20 transition-all border border-secondary-container/20">
+<span class="material-symbols-outlined text-sm">file_download</span>
+<span class="text-xs font-bold uppercase tracking-wider">Export</span>
+</button>
+</div>
+</section>
+<!-- Content Layout: Map + Legend -->
+<div class="flex-1 flex overflow-hidden relative">
+<!-- Graph Visualization Canvas -->
+<div class="flex-1 relative grid-pattern bg-[#0A1628]">
+<!-- SVG Graph Placeholder -->
+<svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<filter id="glow">
+<fegaussianblur result="coloredBlur" stddeviation="2.5"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Edges (Lines) -->
+<g stroke-opacity="0.3" stroke-width="1.5">
+<line stroke="#00D4FF" x1="20%" x2="40%" y1="30%" y2="20%"></line>
+<line stroke="#b2c5ff" x1="40%" x2="60%" y2="35%"></line>
+<line stroke="#ffb598" x1="60%" x2="55%" y1="35%" y2="60%"></line>
+<line stroke="#00D4FF" x1="20%" x2="35%" y1="30%" y2="55%"></line>
+<line stroke="#b2c5ff" x1="35%" x2="55%" y1="55%" y2="60%"></line>
+<line stroke="#00D4FF" x1="60%" x2="80%" y1="35%" y2="25%"></line>
+<line stroke="#ffb598" x1="80%" x2="85%" y1="25%" y2="50%"></line>
+<line stroke="#00D4FF" x1="55%" x2="70%" y1="60%" y2="75%"></line>
+<line stroke="#b2c5ff" x1="40%" x2="25%" y1="20%" y2="15%"></line>
+</g>
+<!-- Nodes -->
+<!-- ISO Clause Node -->
+<g class="cursor-pointer group" transform="translate(400, 200)">
+<circle fill="#0F2140" filter="url(#glow)" r="22" stroke="#b2c5ff" stroke-width="2"></circle>
+<text class="fill-on-surface text-[10px] font-bold tracking-tighter" text-anchor="middle" y="35">ISO-4.2</text>
+<circle class="node-pulse" fill="#b2c5ff" r="4"></circle>
+</g>
+<!-- Artifact Node -->
+<g class="cursor-pointer group" transform="translate(200, 300)">
+<circle fill="#0F2140" r="14" stroke="#00D4FF" stroke-width="1.5"></circle>
+<text class="fill-on-surface-variant text-[9px] font-medium" text-anchor="middle" y="28">B0-03</text>
+</g>
+<!-- Control Node -->
+<g class="cursor-pointer group" transform="translate(600, 350)">
+<circle fill="#0F2140" r="18" stroke="#ffb598" stroke-width="2"></circle>
+<text class="fill-on-surface text-[10px] font-bold" text-anchor="middle" y="32">A.5.15</text>
+</g>
+<!-- Regulation Node -->
+<g class="cursor-pointer group" transform="translate(800, 250)">
+<circle fill="#0F2140" r="16" stroke="#00D2FD" stroke-width="1.5"></circle>
+<text class="fill-on-surface text-[10px] font-bold" text-anchor="middle" y="30">EUAI-ART5</text>
+</g>
+<!-- More Nodes scattered -->
+<g class="cursor-pointer" transform="translate(350, 550)"><circle fill="#0F2140" r="12" stroke="#00D4FF" stroke-width="1"></circle><text class="fill-outline text-[8px]" text-anchor="middle" y="25">DOC-7</text></g>
+<g class="cursor-pointer" transform="translate(550, 600)"><circle fill="#0F2140" r="20" stroke="#b2c5ff" stroke-width="2"></circle><text class="fill-on-surface text-[10px] font-bold" text-anchor="middle" y="35">ISO-6.1</text></g>
+<g class="cursor-pointer" transform="translate(850, 500)"><circle fill="#0F2140" r="14" stroke="#ffb598" stroke-width="1"></circle><text class="fill-outline text-[9px]" text-anchor="middle" y="28">A.8.1</text></g>
+<g class="cursor-pointer" transform="translate(700, 750)"><circle fill="#0F2140" r="15" stroke="#00D4FF" stroke-width="1.5"></circle><text class="fill-on-surface text-[9px]" text-anchor="middle" y="28">LOG-02</text></g>
+<g class="cursor-pointer" transform="translate(250, 150)"><circle fill="#0F2140" r="10" stroke="#b2c5ff" stroke-width="1"></circle><text class="fill-outline text-[8px]" text-anchor="middle" y="22">ISO-1</text></g>
+</svg>
+<!-- Floating Toolbar -->
+<div class="absolute left-8 bottom-8 flex flex-col gap-2">
+<div class="p-1 glass-panel rounded-xl flex flex-col gap-1 shadow-2xl">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-outline">add</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-outline">remove</span>
+</button>
+<hr class="border-white/5 mx-2"/>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-white/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-outline">center_focus_strong</span>
+</button>
+</div>
+</div>
+<!-- Info Overlay (Simulated Hover) -->
+<div class="absolute top-1/4 left-1/3 glass-panel p-4 rounded-xl border-primary/30 w-64 shadow-[0_0_30px_rgba(0,0,0,0.5)] transform -translate-x-1/2 -translate-y-full opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Clause Node</span>
+<span class="material-symbols-outlined text-sm text-primary">verified</span>
+</div>
+<h4 class="text-sm font-bold mb-1">ISO 27001 - 4.2</h4>
+<p class="text-[11px] text-outline mb-3 leading-relaxed">Understanding the needs and expectations of interested parties.</p>
+<div class="flex gap-2">
+<span class="bg-secondary-container/10 text-secondary-container text-[8px] px-1.5 py-0.5 rounded font-bold">12 RELATIONS</span>
+<span class="bg-tertiary-container/10 text-tertiary text-[8px] px-1.5 py-0.5 rounded font-bold">3 CRITICAL</span>
+</div>
+</div>
+</div>
+<!-- Sidebar/Legend (Right Side) -->
+<aside class="w-80 h-full glass-panel border-l border-white/5 p-6 flex flex-col gap-8 overflow-y-auto">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-outline mb-5">Node Types</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#00D4FF] shadow-[0_0_8px_rgba(0,212,255,0.4)]"></div>
+<span class="text-xs font-medium text-on-surface">Artifact</span>
+<span class="ml-auto text-[10px] text-outline">B0-01...</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#ffb598] shadow-[0_0_8px_rgba(255,181,152,0.4)]"></div>
+<span class="text-xs font-medium text-on-surface">Control</span>
+<span class="ml-auto text-[10px] text-outline">A.5.1...</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#b2c5ff] shadow-[0_0_8px_rgba(178,197,255,0.4)]"></div>
+<span class="text-xs font-medium text-on-surface">Clause</span>
+<span class="ml-auto text-[10px] text-outline">ISO-4.1...</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-[#00D2FD] shadow-[0_0_8px_rgba(0,210,253,0.4)]"></div>
+<span class="text-xs font-medium text-on-surface">Regulation</span>
+<span class="ml-auto text-[10px] text-outline">EUAI-ART...</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold uppercase tracking-[0.2em] text-outline mb-5">Relation Types</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-0.5 bg-[#00D4FF]"></div>
+<span class="text-xs font-medium text-on-surface">Implements</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-0.5 bg-[#b2c5ff]"></div>
+<span class="text-xs font-medium text-on-surface">References</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-0.5 bg-[#ffb598]"></div>
+<span class="text-xs font-medium text-on-surface">Depends On</span>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-white/5">
+<div class="bg-surface-container-high rounded-xl p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-sm">info</span>
+<span class="text-[10px] font-bold text-on-surface uppercase tracking-wider">Map Insights</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+                            Currently showing <span class="text-secondary">42 distinct nodes</span> and <span class="text-secondary">108 relations</span>. The largest cluster is centered around <span class="text-primary font-bold">Clause 4.2</span>.
+                        </p>
+<button class="w-full mt-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">
+                            View Impact Analysis
+                        </button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for nodes
+        document.querySelectorAll('g.cursor-pointer').forEach(node => {
+            node.addEventListener('mouseenter', () => {
+                const circle = node.querySelector('circle:first-child');
+                circle.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                circle.style.strokeWidth = '4px';
+                circle.style.fill = '#1E6FFF22';
+            });
+            node.addEventListener('mouseleave', () => {
+                const circle = node.querySelector('circle:first-child');
+                circle.style.strokeWidth = circle.getAttribute('data-original-width') || '2px';
+                circle.style.fill = '#0F2140';
+            });
+        });
+
+        // Store original stroke widths
+        document.querySelectorAll('circle:first-child').forEach(c => {
+            c.setAttribute('data-original-width', c.getAttribute('stroke-width'));
+        });
+    </script>
+</body></html>

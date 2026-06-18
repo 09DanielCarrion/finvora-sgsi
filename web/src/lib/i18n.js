@@ -1,0 +1,46 @@
+export const translations = {
+  en: {
+    dashboard: "Dashboard",
+    company: "The Company",
+    iso27001: "ISO 27001",
+    euAiAct: "EU AI Act",
+    operations: "ISMS Operations",
+    relationsMap: "Relations Map",
+    maturityScore: "ISMS Maturity Score",
+    complianceStatus: "Compliance Status",
+    riskHeatMap: "Risk Heat Map",
+    controlDistribution: "Control Distribution",
+    projectMilestones: "Project Milestones",
+    recentArtifacts: "Recent Artifacts",
+    comingSoon: "Content in Progress",
+    implemented: "Implemented",
+    inProgress: "In Progress",
+    pending: "Pending",
+    excluded: "Excluded",
+    talkToTeam: "Talk to Finvora's Team",
+  },
+  es: {
+    dashboard: "Panel Principal",
+    company: "La Empresa",
+    iso27001: "ISO 27001",
+    euAiAct: "EU AI Act",
+    operations: "Operación del SGSI",
+    relationsMap: "Mapa de Relaciones",
+    maturityScore: "Puntaje de Madurez del SGSI",
+    complianceStatus: "Estado de Cumplimiento",
+    riskHeatMap: "Mapa de Calor de Riesgos",
+    controlDistribution: "Distribución de Controles",
+    projectMilestones: "Hitos del Proyecto",
+    recentArtifacts: "Artefactos Recientes",
+    comingSoon: "Contenido en Progreso",
+    implemented: "Implementado",
+    inProgress: "En Progreso",
+    pending: "Pendiente",
+    excluded: "Excluido",
+    talkToTeam: "Habla con el Equipo de Finvora",
+  },
+};
+
+export function t(lang, key) {
+  return translations[lang]?.[key] ?? translations.en[key] ?? key;
+}
