@@ -24,7 +24,7 @@ export default function Dashboard() {
         </div>
         <MilestoneTimeline milestones={projectState.milestones} title={t(lang, "projectMilestones")} />
       </div>
-      <RecentArtifacts items={[]} title={t(lang, "recentArtifacts")} />
+      <RecentArtifacts items={projectState.recentArtifacts} title={t(lang, "recentArtifacts")} />
     </div>
   );
 }

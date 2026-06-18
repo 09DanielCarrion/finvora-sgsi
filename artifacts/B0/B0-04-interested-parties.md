@@ -1,0 +1,18 @@
+# Interested Parties and Their Requirements (Clause 4.2)
+
+| Interested Party | Relationship to Finvora | Security/Compliance Requirements | Current Management Approach | Criticality |
+|---|---|---|---|---|
+| Hexalink GmbH | EU client integrating Finvora's credit/payment APIs into its supply-chain financing network | ISO 27001 certification by Dec 2026 (contractual), GDPR compliance, EU AI Act compliance for the credit scoring system | Contract signed with certification deadline; DPA still in negotiation, not signed | High |
+| Meridian Ventures | Series A investor, 23% equity, board seat | Quarterly security risk reporting, cyber insurance in place | Informal verbal updates only; no formal reporting cadence or cyber insurance policy yet | High |
+| SBS (Superintendencia de Banca y Seguros) | Peruvian financial regulator | Compliance with SBS Circular G-185 on technology risk management | Annual technology risk report filed, but not all circular requirements are met | High |
+| SUNAT | Peruvian tax authority | Digital tax compliance obligations | Handled by Finance & Accounting; no direct ISMS dependency | Low |
+| AWS | Cloud infrastructure provider | Shared responsibility model: Finvora is responsible for application-layer and identity security | Single AWS account, no AWS Organizations/SCPs, DPA for GDPR not formally executed | Critical |
+| Stripe | Payment processor | PCI DSS compliance from merchants/partners | Partial SAQ A compliance only; Stripe has sent two compliance reminders | Critical |
+| Peruvian SME customers | Borrowers and payment platform users | Protection of financial and personal data | No formal data protection program; reliance on AWS-level security only | High |
+| Colombian/Chilean corporate clients | Regional B2B clients | Contractual security requirements (varies by client) | Handled case-by-case during sales contracting; no standardized security questionnaire response | Medium |
+| Employees (95) | Internal workforce with system access | Clear security policies, training, secure offboarding | No formal policies; no security awareness training; offboarding gaps documented (see B0-09) | High |
+| Board of Directors (incl. Meridian Ventures) | Governance body | Visibility into security and compliance risk | Ad hoc updates during board meetings; no standing security agenda item | High |
+| External financial auditors | Annual financial statement audit | Review of technology risk as part of audit scope | Limited interaction historically; technology risk not deeply assessed in past audits | Medium |
+| INDECOPI | Peruvian personal data protection authority | Compliance with Ley 29733 (registration, breach notification) | Database registration pending; March 2025 incident was not reported (see B0-11) | High |
+| Credit data providers (Equifax Peru, Experian Peru) | Provide credit bureau data used in scoring models | Data processing agreements (DPAs) | Equifax: usage contract signed, no formal DPA; Experian: usage contract signed, no GDPR-compliant DPA | High |
+| API integration partners (8 companies) | Consume Finvora's financial services API | Security requirements embedded in SLAs | Security clauses exist in some SLAs but are not consistently enforced or verified | Medium |
