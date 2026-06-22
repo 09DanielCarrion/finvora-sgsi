@@ -1,4 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function ArtifactViewer({ artifact, onClose }) {
   return (
@@ -25,7 +27,9 @@ export default function ArtifactViewer({ artifact, onClose }) {
                 Close
               </button>
             </div>
-            <div className="text-sm text-text-primary/90 font-body whitespace-pre-wrap">{artifact.content}</div>
+            <div className="markdown-body text-sm font-body">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{artifact.content}</ReactMarkdown>
+            </div>
           </motion.div>
         </motion.div>
       )}

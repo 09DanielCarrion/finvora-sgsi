@@ -691,3 +691,97 @@ button:active, .artifact-card:active {
   font-size: 10px;
   color: var(--text-secondary);
 }
+
+/* ---- Markdown rendering (artifact viewer) ---- */
+.markdown-body { color: var(--text-primary); line-height: 1.6; }
+
+.markdown-body h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.markdown-body h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 24px 0 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.markdown-body h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+.markdown-body h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  margin: 18px 0 8px;
+}
+
+.markdown-body p { margin: 0 0 12px; color: var(--text-primary); opacity: 0.92; }
+
+.markdown-body strong { color: var(--text-primary); font-weight: 600; }
+
+.markdown-body em { color: var(--text-mono); }
+
+.markdown-body ul, .markdown-body ol {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  color: var(--text-primary);
+  opacity: 0.92;
+}
+
+.markdown-body li { margin-bottom: 4px; }
+
+.markdown-body hr { border: none; border-top: 1px solid var(--border-subtle); margin: 20px 0; }
+
+.markdown-body a { color: var(--accent-secondary); text-decoration: underline; }
+
+.markdown-body code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--accent-secondary);
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 16px;
+  font-size: 12px;
+  overflow-x: auto;
+  display: block;
+}
+
+.markdown-body table thead { display: table; width: 100%; table-layout: fixed; }
+.markdown-body table tbody { display: table; width: 100%; table-layout: fixed; }
+
+.markdown-body th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-align: left;
+  padding: 8px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+.markdown-body td {
+  padding: 8px 10px;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: top;
+}
+
+.markdown-body tr:nth-child(even) td { background: rgba(255, 255, 255, 0.015); }
