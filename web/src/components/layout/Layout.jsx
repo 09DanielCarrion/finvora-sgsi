@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import ChatButton from "../chat/ChatButton";
+import { pageVariants } from "../../lib/motion";
 
 export default function Layout() {
   const [lang, setLang] = useState(localStorage.getItem("finvora-lang") || "en");
@@ -14,14 +16,22 @@ export default function Layout() {
   }
 
   return (
-    <div className="min-h-screen bg-navy-900">
+    <div className="min-h-screen bg-base-bg">
       <Sidebar lang={lang} />
-      <div className="ml-[260px] flex flex-col min-h-screen">
-        <Header lang={lang} setLang={handleSetLang} />
-        <main className="flex-1 p-8">
-          <Outlet context={{ lang }} />
-        </main>
-      </div>
+      <Header lang={lang} setLang={handleSetLang} />
+      <main className="main-content">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <Outlet context={{ lang }} />
+          </motion.div>
+        </AnimatePresence>
+      </main>
       <ChatButton lang={lang} currentSection={location.pathname} />
     </div>
   );

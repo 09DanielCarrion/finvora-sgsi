@@ -2,18 +2,16 @@ const LABELS = { iso27001: "ISO 27001:2022", gdpr: "GDPR Readiness", euAiAct: "E
 
 export default function ComplianceBars({ compliance, title = "Compliance Status" }) {
   return (
-    <div className="bg-navy-800 border border-navy-700 rounded-xl p-6">
-      <p className="text-sm font-medium text-gray-400 mb-4">{title}</p>
-      <div className="space-y-4">
+    <div className="card p-6">
+      <p className="gauge-label">{title}</p>
+      <div>
         {Object.entries(compliance).map(([key, value]) => (
-          <div key={key}>
-            <div className="flex items-center justify-between text-xs mb-1">
-              <span className="text-gray-300">{LABELS[key] ?? key}</span>
-              <span className="text-gray-400">{value}%</span>
+          <div key={key} className="compliance-bar-item">
+            <span className="compliance-label">{LABELS[key] ?? key}</span>
+            <div className="compliance-track">
+              <div className="compliance-fill" style={{ width: `${value}%` }} />
             </div>
-            <div className="h-2 bg-navy-700 rounded-full overflow-hidden">
-              <div className="h-full bg-blue-electric rounded-full" style={{ width: `${value}%` }} />
-            </div>
+            <span className="compliance-pct">{value}%</span>
           </div>
         ))}
       </div>

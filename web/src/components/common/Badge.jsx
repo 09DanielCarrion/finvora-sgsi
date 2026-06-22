@@ -1,19 +1,19 @@
 import { cn } from "../../lib/utils";
 
 const VARIANTS = {
-  implemented: "bg-status-implemented/15 text-status-implemented border-status-implemented/40",
-  partial: "bg-status-partial/15 text-status-partial border-status-partial/40",
+  implemented: "bg-status-success/15 text-status-success border-status-success/40",
+  partial: "bg-status-warning/15 text-status-warning border-status-warning/40",
   critical: "bg-status-critical/15 text-status-critical border-status-critical/40",
-  excluded: "bg-status-excluded/15 text-gray-400 border-status-excluded/40",
-  neutral: "bg-blue-electric/15 text-blue-electric border-blue-electric/40",
-  comingSoon: "bg-navy-700 text-gray-400 border-navy-700",
+  excluded: "bg-status-pending/30 text-text-secondary border-status-pending/50",
+  neutral: "bg-accent-primary/15 text-accent-primary border-accent-primary/40",
+  comingSoon: "bg-base-elevated text-text-secondary border-border-subtle",
 };
 
 export default function Badge({ children, variant = "neutral", className }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border",
+        "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border font-body",
         VARIANTS[variant] ?? VARIANTS.neutral,
         className
       )}

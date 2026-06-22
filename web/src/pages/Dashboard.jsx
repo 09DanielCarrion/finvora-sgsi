@@ -12,18 +12,16 @@ export default function Dashboard() {
   const { lang } = useOutletContext();
 
   return (
-    <div className="grid grid-cols-3 gap-6">
-      <div className="col-span-2 space-y-6">
-        <div className="grid grid-cols-2 gap-6">
-          <MaturityGauge value={projectState.overallMaturity} label={t(lang, "maturityScore")} />
-          <ControlDonut stats={projectState.controlStats} title={t(lang, "controlDistribution")} />
-        </div>
-        <div className="grid grid-cols-2 gap-6">
-          <ComplianceBars compliance={projectState.compliance} title={t(lang, "complianceStatus")} />
-          <RiskHeatMap title={t(lang, "riskHeatMap")} />
-        </div>
-        <MilestoneTimeline milestones={projectState.milestones} title={t(lang, "projectMilestones")} />
+    <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-6">
+        <MaturityGauge value={projectState.overallMaturity} label={t(lang, "maturityScore")} />
+        <ComplianceBars compliance={projectState.compliance} title={t(lang, "complianceStatus")} />
       </div>
+      <div className="grid grid-cols-2 gap-6">
+        <RiskHeatMap title={t(lang, "riskHeatMap")} />
+        <ControlDonut stats={projectState.controlStats} title={t(lang, "controlDistribution")} />
+      </div>
+      <MilestoneTimeline milestones={projectState.milestones} title={t(lang, "projectMilestones")} />
       <RecentArtifacts items={projectState.recentArtifacts} title={t(lang, "recentArtifacts")} />
     </div>
   );

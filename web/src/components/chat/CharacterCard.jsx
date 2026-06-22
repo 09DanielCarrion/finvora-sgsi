@@ -1,12 +1,8 @@
 import { Shield, Code2, Scale, BarChart3 } from "lucide-react";
 
 const ICONS = { CISO: Shield, CTO: Code2, LegalDirector: Scale, CFO: BarChart3 };
-const COLORS = {
-  CISO: "text-blue-electric border-blue-electric",
-  CTO: "text-blue-cyan border-blue-cyan",
-  LegalDirector: "text-purple-400 border-purple-400",
-  CFO: "text-status-implemented border-status-implemented",
-};
+const CLASS = { CISO: "char-ciso", CTO: "char-cto", LegalDirector: "char-legal", CFO: "char-cfo" };
+const ICON_COLOR = { CISO: "#3B82F6", CTO: "#06B6D4", LegalDirector: "#8B5CF6", CFO: "#10B981" };
 const TITLES = {
   CISO: "Chief Information Security Officer",
   CTO: "Chief Technology Officer",
@@ -20,19 +16,16 @@ const DESCRIPTIONS = {
   CFO: "Budget, ROI, financial trade-offs",
 };
 
-export default function CharacterCard({ character, onClick, active }) {
+export default function CharacterCard({ character, onClick }) {
   const Icon = ICONS[character];
   return (
-    <button
-      onClick={onClick}
-      className={`w-full text-left bg-navy-700 hover:bg-navy-700/70 border rounded-lg p-3 flex items-start gap-3 transition-colors ${
-        active ? COLORS[character] : "border-navy-700"
-      }`}
-    >
-      <Icon size={20} className={COLORS[character].split(" ")[0]} />
+    <button onClick={onClick} className={`character-card w-full text-left ${CLASS[character]}`}>
+      <span className="character-avatar">
+        <Icon size={18} color={ICON_COLOR[character]} />
+      </span>
       <div>
-        <p className="text-sm font-semibold text-white">{TITLES[character]}</p>
-        <p className="text-xs text-gray-400">{DESCRIPTIONS[character]}</p>
+        <p className="character-name">{TITLES[character]}</p>
+        <p className="character-role">{DESCRIPTIONS[character]}</p>
       </div>
     </button>
   );

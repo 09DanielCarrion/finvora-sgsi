@@ -1,7 +1,9 @@
 import { useOutletContext } from "react-router-dom";
+import { motion } from "framer-motion";
 import Breadcrumb from "../components/common/Breadcrumb";
 import ArtifactCard from "../components/artifacts/ArtifactCard";
 import { t } from "../lib/i18n";
+import { containerVariants } from "../lib/motion";
 
 const B2_ARTIFACTS = [
   { id: "B2-01", name: "AI System Classification under EU AI Act" },
@@ -19,13 +21,20 @@ export default function EUAIAct() {
 
   return (
     <div>
-      <Breadcrumb items={[t(lang, "dashboard"), t(lang, "euAiAct")]} />
-      <h1 className="text-2xl font-bold text-white mb-6">EU AI Act + AI Frameworks</h1>
-      <div className="grid grid-cols-3 gap-5">
-        {B2_ARTIFACTS.map((artifact) => (
-          <ArtifactCard key={artifact.id} {...artifact} status="comingSoon" />
-        ))}
+      <div className="page-header">
+        <Breadcrumb items={[t(lang, "dashboard"), t(lang, "euAiAct")]} />
+        <h1 className="page-title">EU AI Act + AI Frameworks</h1>
       </div>
+      <motion.div
+        variants={containerVariants}
+        initial="initial"
+        animate="animate"
+        className="grid grid-cols-3 gap-5"
+      >
+        {B2_ARTIFACTS.map((artifact) => (
+          <ArtifactCard key={artifact.id} {...artifact} block="B2" status="comingSoon" />
+        ))}
+      </motion.div>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import { useOutletContext } from "react-router-dom";
+import { motion } from "framer-motion";
 import Breadcrumb from "../components/common/Breadcrumb";
 import ArtifactCard from "../components/artifacts/ArtifactCard";
 import { projectState } from "../data/project-state";
 import { t } from "../lib/i18n";
+import { containerVariants, cardVariants } from "../lib/motion";
 
 const B3_ARTIFACTS = [
   { id: "B3-01", name: "Post-Implementation Security Metrics" },
@@ -27,29 +29,39 @@ export default function Operations() {
 
   return (
     <div>
-      <Breadcrumb items={[t(lang, "dashboard"), t(lang, "operations")]} />
-      <h1 className="text-2xl font-bold text-white mb-6">ISMS Operations</h1>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="page-header">
+        <Breadcrumb items={[t(lang, "dashboard"), t(lang, "operations")]} />
+        <h1 className="page-title">ISMS Operations</h1>
+      </div>
+      <motion.div
+        variants={containerVariants}
+        initial="initial"
+        animate="animate"
+        className="grid grid-cols-3 gap-5"
+      >
         {B3_ARTIFACTS.map((artifact) => (
-          <ArtifactCard key={artifact.id} {...artifact} status="comingSoon" />
+          <ArtifactCard key={artifact.id} {...artifact} block="B3" status="comingSoon" />
         ))}
-        <div className="bg-navy-800 border border-dashed border-blue-electric rounded-xl p-6 flex flex-col items-center text-center gap-3">
-          <p className="text-sm font-semibold text-white">B3-10 - AI Auditor Report</p>
-          <p className="text-xs text-gray-400">
+        <motion.div
+          variants={cardVariants}
+          className="artifact-card coming-soon card p-6 flex flex-col items-center text-center gap-3"
+        >
+          <p className="text-sm font-semibold text-text-primary font-display">B3-10 - AI Auditor Report</p>
+          <p className="text-xs text-text-secondary font-body">
             Single activation, once all other artifacts are complete
           </p>
           <button
             disabled={!allOthersComplete}
-            className={`text-xs font-medium px-4 py-2 rounded-full ${
+            className={`text-xs font-medium font-body px-4 py-2 rounded-full ${
               allOthersComplete
-                ? "bg-blue-electric text-white"
-                : "bg-navy-700 text-gray-500 cursor-not-allowed"
+                ? "bg-accent-primary text-white"
+                : "bg-base-elevated text-text-secondary cursor-not-allowed"
             }`}
           >
             Run AI Auditor
           </button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

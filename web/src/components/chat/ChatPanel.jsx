@@ -30,43 +30,38 @@ export default function ChatPanel({ onClose, currentSection }) {
   }
 
   return (
-    <div className="fixed bottom-24 right-6 w-[380px] max-h-[600px] bg-navy-800/95 backdrop-blur-md border border-navy-700 rounded-2xl shadow-2xl flex flex-col z-50">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-navy-700">
-        <p className="text-sm font-semibold text-white">Finvora's Team</p>
-        <button onClick={onClose} className="text-gray-400 hover:text-white">
-          <X size={18} />
+    <div className="chat-panel flex flex-col max-h-[600px]">
+      <div className="flex items-center justify-between px-2 py-1 mb-2">
+        <p className="text-sm font-semibold font-display text-text-primary">Finvora's Team</p>
+        <button onClick={onClose} className="text-text-secondary hover:text-text-primary">
+          <X size={16} />
         </button>
       </div>
 
       {!character ? (
-        <div className="p-4 space-y-2">
+        <div className="space-y-2">
           {CHARACTERS.map((c) => (
             <CharacterCard key={c} character={c} onClick={() => setCharacter(c)} />
           ))}
         </div>
       ) : (
         <>
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 min-h-[200px] max-h-[360px]">
+          <div className="flex-1 overflow-y-auto px-1 py-2 space-y-3 min-h-[200px] max-h-[360px]">
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={`text-sm rounded-lg px-3 py-2 max-w-[85%] ${
-                  m.role === "user"
-                    ? "bg-blue-electric/20 text-white ml-auto"
-                    : "bg-navy-700 text-gray-200"
+                className={`text-sm font-body rounded-lg px-3 py-2 max-w-[85%] ${
+                  m.role === "user" ? "bg-accent-primary/20 text-text-primary ml-auto" : "bg-base-elevated text-text-primary"
                 }`}
               >
                 {m.text}
               </div>
             ))}
-            {loading && <p className="text-xs text-gray-500">Typing...</p>}
-            {error && <p className="text-xs text-status-critical">{error}</p>}
+            {loading && <p className="text-xs text-text-secondary font-body">Typing...</p>}
+            {error && <p className="text-xs text-status-critical font-body">{error}</p>}
           </div>
-          <div className="border-t border-navy-700 p-3 flex items-center gap-2">
-            <button
-              onClick={() => setCharacter(null)}
-              className="text-xs text-gray-400 hover:text-white"
-            >
+          <div className="border-t border-border-subtle pt-2 flex items-center gap-2">
+            <button onClick={() => setCharacter(null)} className="text-xs font-body text-text-secondary hover:text-text-primary">
               Back
             </button>
             <input
@@ -74,9 +69,9 @@ export default function ChatPanel({ onClose, currentSection }) {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Type a message..."
-              className="flex-1 bg-navy-700 rounded-full px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none"
+              className="flex-1 bg-base-elevated rounded-full px-3 py-2 text-sm font-body text-text-primary placeholder-text-secondary focus:outline-none"
             />
-            <button onClick={handleSend} className="text-blue-electric hover:text-blue-cyan">
+            <button onClick={handleSend} className="text-accent-primary hover:text-accent-secondary">
               <Send size={18} />
             </button>
           </div>

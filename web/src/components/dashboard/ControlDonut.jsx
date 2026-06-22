@@ -1,10 +1,10 @@
 import { PieChart, Pie, Cell } from "recharts";
 
 const COLORS = {
-  implemented: "#00C48C",
-  inProgress: "#FFB800",
-  pending: "#4A5568",
-  excluded: "#2D3748",
+  implemented: "#10B981",
+  inProgress: "#F59E0B",
+  pending: "#334155",
+  excluded: "#1A2D4A",
 };
 
 export default function ControlDonut({ stats, title = "Control Distribution" }) {
@@ -16,8 +16,8 @@ export default function ControlDonut({ stats, title = "Control Distribution" }) 
   ];
 
   return (
-    <div className="bg-navy-800 border border-navy-700 rounded-xl p-6 flex flex-col items-center">
-      <p className="text-sm font-medium text-gray-400 mb-2 self-start">{title}</p>
+    <div className="card p-6 flex flex-col items-center">
+      <p className="gauge-label self-start">{title}</p>
       <div className="relative">
         <PieChart width={160} height={160}>
           <Pie data={data} dataKey="value" innerRadius={50} outerRadius={75} startAngle={90} endAngle={-270}>
@@ -27,13 +27,13 @@ export default function ControlDonut({ stats, title = "Control Distribution" }) 
           </Pie>
         </PieChart>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-lg font-bold text-white">
+          <span className="text-lg font-bold text-text-primary font-display">
             {stats.implemented}/{stats.total}
           </span>
-          <span className="text-[10px] text-gray-500">CONTROLS</span>
+          <span className="text-[10px] text-text-secondary font-mono">CONTROLS</span>
         </div>
       </div>
-      <div className="flex flex-wrap gap-3 mt-3 text-[11px] text-gray-400">
+      <div className="flex flex-wrap gap-3 mt-3 text-[11px] text-text-secondary font-mono">
         {data.map((entry) => (
           <span key={entry.name} className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[entry.name] }} />
