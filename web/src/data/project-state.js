@@ -1,5 +1,5 @@
 export const projectState = {
-  lastUpdated: "2026-06-18",
+  lastUpdated: "2026-06-20",
   overallMaturity: Math.round((16 / 47) * 100),
   compliance: { iso27001: 0, gdpr: 0, euAiAct: 0, pciDss: 0 },
   controlStats: { implemented: 0, inProgress: 0, pending: 93, excluded: 0, total: 93 },

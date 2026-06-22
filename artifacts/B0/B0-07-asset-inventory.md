@@ -22,7 +22,7 @@
 | INF-10 | AWS API keys and secrets | Information | Confidential | CTO | AWS Secrets Manager / (partially hardcoded in repos) | Yes | 2 repos found with hardcoded secrets |
 | INF-11 | Stripe API keys | Information | Confidential | CTO | AWS Secrets Manager | Yes | - |
 | INF-12 | Equifax Peru API credentials | Information | Confidential | CTO | AWS Secrets Manager | Yes | - |
-| INF-13 | Employee personal data (HR records) | Information | Confidential | HR Lead | Google Workspace / HR system | Yes | - |
+| INF-13 | Employee personal data (HR records) | Information | Confidential | Patricia Salas (HR Lead) | Google Workspace / HR system | Yes | - |
 | INF-14 | Hexalink GmbH employee data (EU data subjects) | Information | Confidential | Legal Director | RDS PostgreSQL (us-east-1) | Yes | GDPR cross-border transfer issue - see B0-08 |
 | INF-15 | Client contracts | Information | Internal | Legal Director | Google Drive | No | - |
 | INF-16 | Vendor contracts | Information | Internal | Legal Director | Google Drive | No | - |

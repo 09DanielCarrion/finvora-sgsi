@@ -21,8 +21,8 @@
 - **Automated decision:** Yes, automatic blocking with no human intervention.
 - **Latency requirement:** Under 200ms.
 - **Affected users:** All payments platform customers.
-- **EU AI Act classification:** Possibly high-risk, pending a formal Annex III analysis - automatic blocking of transactions can affect access to essential financial services.
-- **Identified problem:** False positive rate of approximately 3.2%, with legitimate customers blocked and no clear appeals process.
+- **EU AI Act classification:** Possibly high-risk, pending a formal Annex III analysis - automatic blocking of transactions can affect access to essential financial services. **Anticipated finding:** the automated blocking of financial transactions without human intervention is expected to fall under Annex III Section 5(b) (systems affecting access to essential financial services), and the formal classification in B2-01 will most likely confirm FraudGuard as high-risk.
+- **Identified problem:** False positive rate of approximately 3.2%, with legitimate customers blocked and no clear appeals process. This lack of an appeals mechanism is itself a likely EU AI Act compliance gap (human oversight, Art. 14).
 
 ## System 3 - RiskAnalyzer (Automated Risk Analysis)
 

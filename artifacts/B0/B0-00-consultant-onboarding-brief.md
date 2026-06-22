@@ -1,7 +1,7 @@
 # Consultant Onboarding Brief
 
 **Document prepared by:** Isabella Torres, CISO
-**Date:** March 2, 2026
+**Date:** June 20, 2026
 **Recipient:** Daniel Carrion, GRC Consultant
 
 ---
@@ -12,11 +12,11 @@
 |---|---|
 | Consultant | Daniel Carrion, GRC Consultant - ISO 27001 Lead Implementer (PECB Provisional) |
 | Client | Finvora S.A.C. |
-| Engagement start | March 2, 2026 |
-| Engagement duration | 8 months |
+| Engagement start | June 20, 2026 |
+| Engagement duration | 6 months |
 | Primary contact | Isabella Torres, CISO (isabella.torres@finvora.com) |
 | Secondary contact | Carlos Mendoza, CEO (carlos.mendoza@finvora.com) |
-| Contract type | Fixed-fee consulting contract - $24,000 USD total ($3,000/month) |
+| Contract type | Fixed-fee consulting contract - $18,000 USD total ($3,000/month) |
 
 ## Engagement Objective
 
@@ -77,17 +77,17 @@ Isabella has prepared you for what you will encounter. Do not be surprised by:
 
 | Deliverable | Due Date | Clause |
 |---|---|---|
-| ISMS Scope Document | Month 1 | Clause 4.3 |
-| Gap Analysis Complete | Month 2 | Clauses 4-10 + Annex A |
-| Risk Assessment | Month 2-3 | Clause 6.1.2 |
-| Statement of Applicability | Month 3 | Clause 6.1.3d |
-| Risk Treatment Plan | Month 3 | Clause 6.1.3e |
-| All Mandatory Policies | Month 4-5 | Clauses 5.2, 7.5 |
-| Implementation Plan | Month 4 | Clause 8.1 |
-| Internal Audit | Month 6-7 | Clause 9.2 |
-| Management Review | Month 7 | Clause 9.3 |
-| Stage 1 Audit Ready | Month 7 | - |
-| Stage 2 Audit Ready | Month 8 | - |
+| ISMS Scope Document | Month 1 (July 2026) | Clause 4.3 |
+| Gap Analysis Complete | Month 2 (August 2026) | Clauses 4-10 + Annex A |
+| Risk Assessment | Month 2-3 (Aug-Sep 2026) | Clause 6.1.2 |
+| Statement of Applicability | Month 3 (September 2026) | Clause 6.1.3d |
+| Risk Treatment Plan | Month 3 (September 2026) | Clause 6.1.3e |
+| All Mandatory Policies | Month 3-4 (Sep-Oct 2026) | Clauses 5.2, 7.5 |
+| Implementation Plan | Month 4 (October 2026) | Clause 8.1 |
+| Internal Audit | Month 5 (November 2026) | Clause 9.2 |
+| Management Review | Month 5 (November 2026) | Clause 9.3 |
+| Stage 1 Audit Ready | Month 6 (December 2026) | - |
+| Stage 2 Audit Ready | Month 6 (December 2026) | - |
 
 ## Important Notes
 
@@ -98,4 +98,4 @@ Isabella has prepared you for what you will encounter. Do not be surprised by:
 - If you find something that looks like a potential data breach or regulatory violation, escalate to Isabella immediately.
 
 *Document prepared by: Isabella Torres, CISO*
-*Date: March 2, 2026*
+*Date: June 20, 2026*

@@ -12,7 +12,7 @@ Owns engineering, infrastructure, and the AI/ML systems in production. Joined in
 Manages the company's finances and board reporting. Approved the $85,000 annual security budget for 2026 but considers it a ceiling, not a floor, until he sees clear ROI. Wants every new security investment quantified in terms of risk reduction or revenue protection. Sits on the budget conversation for the ISO 27001 certification itself, which is the single largest line item in the security budget this year.
 
 ### Isabella Torres - Chief Information Security Officer (33)
-Hired 8 months ago (July 2025), coming from a boutique ISO 27001 consultancy where she led implementations for two other LATAM fintechs. Reports directly to the CEO. Is trying to build the ISMS from close to zero, with a team of 2.5 people. She is the project sponsor for Daniel Carrion's engagement and the main internal champion of the ISO 27001 process.
+Hired 11 months ago (July 2025), coming from a boutique ISO 27001 consultancy where she led implementations for two other LATAM fintechs. Reports directly to the CEO. Is trying to build the ISMS from close to zero, with a team of 2.5 people. She is the project sponsor for Daniel Carrion's engagement and the main internal champion of the ISO 27001 process.
 
 ### Marco Villanueva - Director of Legal & Compliance (39)
 Focused primarily on GDPR exposure from the Hexalink contract and on Peruvian financial and data protection regulation. Understands the legal stakes well but has limited technical background, which sometimes creates friction when regulatory requirements need to be translated into specific technical controls.

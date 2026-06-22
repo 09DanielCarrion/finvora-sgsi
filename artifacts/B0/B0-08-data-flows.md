@@ -28,6 +28,8 @@ Payment initiated -> Finvora validation -> Stripe -> destination bank -> confirm
 
 European employee data from Hexalink GmbH -> Finvora platform -> storage in RDS PostgreSQL, us-east-1 (AWS, United States).
 
+**Data categories processed:** For the embedded financing service, Finvora processes identification data (full name, national ID number, date of birth) and banking data (IBAN, account holder details) of Hexalink's European supplier network contacts and their authorized representatives. No special category data (health, biometric) is processed. The lawful basis claimed is contractual necessity under GDPR Art. 6(1)(b), though this has not been formally documented in a DPA.
+
 This is the most critical flow from a GDPR perspective. Personal data belonging to EU data subjects (Hexalink employees) is stored on infrastructure located in the United States without a documented adequate transfer mechanism (no Standard Contractual Clauses executed with AWS covering this specific flow, and no Data Processing Agreement signed between Finvora and Hexalink at the time of this assessment). This is flagged as a critical compliance gap (see B0-15).
 
 ## Flow 5 - AI Model Training

@@ -30,6 +30,7 @@
 - **Applicability:** Required by Stripe as a condition of the payment processing agreement.
 - **Current status:** Partial compliance at SAQ A level only. No formal assessment has been conducted.
 - **Risk:** Termination of the Stripe contract if PCI DSS v4.0 compliance is not achieved. The original deadline (March 2025) has already passed; Stripe has sent two reminders.
+- **Mitigating action taken:** Isabella Torres sent a formal holding response to Stripe in May 2026 acknowledging the gap and committing to a remediation timeline aligned with the ISO 27001 engagement, which has bought temporary goodwill but not a formal extension. This must be resolved within the engagement.
 - **Owner:** Isabella Torres and Andrea Castillo.
 - **Deadline:** Urgent - already overdue.
 
